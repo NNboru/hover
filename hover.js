@@ -34,9 +34,15 @@ function newrgb(r,g,b){
 
 
 document.addEventListener('DOMContentLoaded',function(){
-    bdy.onerror=e=>alert(e)
     
+    let start = document.getElementById('start'),hov = document.getElementById('clone').firstElementChild;
+    let level = document.getElementById('level'),re = document.querySelector('.alt>div');
+    let timediv = document.getElementById('timediv'),bdy = document.getElementById('bdy');
+    let end = bdy.querySelector('.end');
+
+    bdy.onerror=e=>alert(e)
     let h=bdy.offsetHeight, w=bdy.offsetWidth;
+
     function cango(dir,x,y){
         if(dir=='n')
             return y<60?0:1;
@@ -49,15 +55,8 @@ document.addEventListener('DOMContentLoaded',function(){
         
     }
 
-    let start = document.getElementById('start'),hov = document.getElementById('clone').firstElementChild;
     
-    let x,y,path=20,fakepath=10, prob=.9;
-    x=20+Math.trunc(Math.random()*(w-100));
-    y=80+Math.trunc(Math.random()*(h-160));
-    start.style.left=x+'px';
-    start.style.top=y+'px';
-    s.add(x+','+y+',10200250')
-
+    let x,y,path=16,fakepath=10, prob=1, lev=1, time=30, tid;
 
     function creation(elem, path, dir, x, y, red,g,b, rot, pred, fake){
         let newx,newy;
@@ -122,8 +121,36 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
-	
-    creation(start,path,'s', x,y, 10,200,250, -10, false, false);
+    function nextlevel(){
+        path=16 + lev*5;
+        fakepath=10 + lev*2;
+        time = 18+lev*2;
+        level.innerHTML='Level '+lev;
+        timediv.innerHTML=''+time.toFixed(1);
+        x=20+Math.trunc(Math.random()*(w-100));
+        y=80+Math.trunc(Math.random()*(h-160));
+        start.style.left=x+'px';
+        start.style.top=y+'px';
+        s.clear();
+        s.add(x+','+y+',10200250');
+        
+        creation(start,path,'s', x,y, 10,200,250, -10, false, false);
+        prob-=prob*.05;
+    }
 
+	nextlevel();
+    
+    function countdown(){
+        time-=.1;
+        time=time.toFixed(1);
+        timediv.innerHTML=''+time;
+        if(time==0){
+            clearInterval(tid);
+            // gameover();
+            // restart();
+        }
+    }
+    start.onmouseenter=()=>tid=setInterval(countdown,100);
+    start.onmouseleave=()=>clearInterval(tid);
 
 });

@@ -9,6 +9,77 @@ body{
 }
 body *{
     box-sizing: border-box;
+    font:20px helvetica;
+}
+
+#bar{
+    position:absolute;
+    right:0;
+    top:0;
+    margin:10px;
+    display: inline-grid;
+    grid-auto-flow: column;
+    column-gap: 10px;
+    align-items: center;
+}
+#re, #timediv, #level{
+    display:inline-block;
+    padding:4px;
+    -webkit-text-stroke-width: medium;
+    font-variant-caps: small-caps;
+    color:brown;
+    cursor: default;
+}
+#re{
+    background: url(files/reload.png);
+    background-size: cover;
+    width:26px;
+    height:26px;
+}
+#level:hover, #timediv:hover{
+    transform: scale(1.1) translateY(-2px);
+    color: cyan;
+}
+.alt{
+    display: none;
+    width:0;
+    height:0;
+    opacity: 0;
+}
+#re:hover .alt{
+    display: block;
+    animation: ani-show .2s cubic-bezier(0,0,0,1.4) forwards;
+    animation-delay: .1s;
+}
+#re:hover .alt>div{
+    position: relative;
+    width:fit-content;
+    font-size: .8em;
+    -webkit-text-stroke-width: thin;
+    text-align: center;
+    top: 4px;
+    left:-20px;
+    color: lawngreen;
+    padding-left:4px;
+    padding-right:4px;
+    box-shadow: 0px 0px 8px black;
+    background: navy;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.marker{
+    width:0;
+    height:0;
+    margin-left:50%;
+}
+.marker div{
+    width: 10px;
+    height: 10px;
+    transform: rotateZ(45deg);
+    top: -5px;
+    position: relative;
+    background: navy;
+    border-radius: 0 0 20px 0;
 }
 
 .logo{
@@ -17,24 +88,24 @@ body *{
     font-variant: small-caps;
     background-color: orangered;
     position: relative;
-    top:-170px;
-    left:-20px;
+    top:-130px;
+    left:-2px;
     border:1px solid cyan;
     padding:8px;
     border-radius: 12px;
     cursor: default;
     border-radius: 100% 100% 2% 100%;
     transform: rotate(50deg);
-    width: 100px;
-    height:100px;
+    width: 64px;
+    height:64px;
     animation: anibeat infinite alternate ease-in-out 2s;
 }
 .logo div{
     transform: rotate(-50deg);
     text-align: center;
     position: relative;
-    top:14px;
-    left:5px;
+    top:2px;
+    left:2px;
 }
 .tile{
     width:var(--size);
@@ -44,6 +115,7 @@ body *{
     border-radius: 12px;
     transform: rotateZ(-10deg);
     border:4px solid #0002;
+    cursor: url(files/ufo.ico), default;
 }
 .tile:hover{
     border-color: blue;
@@ -76,6 +148,7 @@ body *{
     background: url(files/smile.png);
     background-size: cover;
     border:none;
+    cursor: pointer;
 }
 .fake{
     animation: anirot infinite alternate ease-in-out 1s;
@@ -101,3 +174,10 @@ body *{
         transform: scale(1.1) rotate(46deg);
     }
 }
+@keyframes ani-show{
+    100%{
+        transform:scale(1.2) translateY(20px);
+        opacity:1;
+    }
+}
+
