@@ -10,10 +10,25 @@
     <meta property="og:image" itemprop="image" content="" />
 
     <link rel=stylesheet href='hover.css' />
-    <script src='hover.js'></script>
+    
 </head>
 
 <body id=bdy>
+
+    <dialog id=dlgpop></dialog>
+    <dialog id=dlgre>
+        <div>Restart</div>
+        <div class='grid'>
+            <input type="button" value='No'  id='butno' />
+            <input type="button" value='Yes' id='butyes' autofocus />
+        </div>
+    </dialog>
+    <dialog id=dlgover>
+        <div>GameOver</div>
+        <input type="button" value='Restart' id='butre' autofocus />
+        </div>
+    </dialog>
+
     <div id=bar>
         <div id='re'>
             <div class="alt"><div><div class="marker"><div></div></div>restart</div></div>
@@ -31,7 +46,7 @@
         </div>
     </div>
 
-
+    <script src='hover.js'></script>
 </body>
 
 </html>

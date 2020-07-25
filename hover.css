@@ -2,21 +2,34 @@ html{
     background-color: #000d;
 }
 body{
-    margin:0;
-    width:95vw;
-    height:95vh;
+    margin:4px;
+    width :calc(100vw - 8px);
+    height:calc(100vh - 8px);
     --size:60px;
 }
 body *{
     box-sizing: border-box;
     font:20px helvetica;
+    -webkit-text-stroke-width: medium;
+    font-variant-caps: small-caps;
+}
+input{
+    font:1.6em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .2s;
+}
+input:hover{
+    transform:scale(1.4);
+    color:cyan;
+    background-color: #000d;
 }
 
 #bar{
     position:absolute;
     right:0;
     top:0;
-    margin:10px;
+    margin:16px;
     display: inline-grid;
     grid-auto-flow: column;
     column-gap: 10px;
@@ -25,10 +38,9 @@ body *{
 #re, #timediv, #level{
     display:inline-block;
     padding:4px;
-    -webkit-text-stroke-width: medium;
-    font-variant-caps: small-caps;
-    color:brown;
+    color:lawngreen;
     cursor: default;
+    transition: all .2s;
 }
 #re{
     background: url(files/reload.png);
@@ -57,8 +69,8 @@ body *{
     font-size: .8em;
     -webkit-text-stroke-width: thin;
     text-align: center;
-    top: 4px;
-    left:-20px;
+    top: 44px;
+    left:-25px;
     color: lawngreen;
     padding-left:4px;
     padding-right:4px;
@@ -70,16 +82,16 @@ body *{
 .marker{
     width:0;
     height:0;
-    margin-left:50%;
+    margin-left:35%;
 }
 .marker div{
-    width: 10px;
-    height: 10px;
-    transform: rotateZ(45deg);
-    top: -5px;
+    width: 16px;
+    height: 11px;
+    /* transform: rotateZ(45deg); */
+    top: -8px;
     position: relative;
     background: navy;
-    border-radius: 0 0 20px 0;
+    border-radius: 4px;
 }
 
 .logo{
@@ -129,6 +141,7 @@ body *{
     display: inline-grid;
     width:0;
     height: 0;
+    transition: all 1s;
 }
 .start > .tile{
     background: url(files/sad.png);
@@ -160,7 +173,59 @@ body *{
 }
 
 
+dialog{
+    background-color:skyblue;
+	text-align:center;
+	box-sizing:border-box;
+	width: fit-content;
+    min-height: initial;
+    padding: 16px;
+    border: 8px solid dodgerblue;
+    border-radius: 20px;
+    top: 120px;
+    z-index: 2;
+    font-size: 2em;
+}
+dialog>div{
+    font-size: 2em;
+}
+dialog::backdrop {
+    background: linear-gradient(0deg, #0f02, transparent);
+}
+.grid{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.anipop{
+	animation:anifade ease-in-out 3s;
+	animation-delay:-.5s;
+}
 
+
+
+@keyframes anifade{
+	0%{
+		opacity:0;
+		transform:translateY(-300px);
+	}
+	25%{
+		opacity:.8;
+		transform:translateY(0);
+	}
+	75%{
+		opacity:.8;
+		transform:translateY(0);
+	}
+	90%{
+		opacity:0;
+	}
+	100%{
+		opacity:0;
+		transform:translateY(-300px);
+	}
+}
 @keyframes anirot{
     from {
         transform:rotate(-60deg);
@@ -176,7 +241,7 @@ body *{
 }
 @keyframes ani-show{
     100%{
-        transform:scale(1.2) translateY(20px);
+        transform:scale(1.2) translateY(-20px);
         opacity:1;
     }
 }
