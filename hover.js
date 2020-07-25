@@ -68,12 +68,12 @@ function creation(elem, path, dir, x, y, red,g,b, rot, pred, fake){
         if(cango(d1,x,y) && cango(d2,x,y)){
             if(Math.random()<.5) [d1,d2]=[d2,d1];
             if(Math.random()<.5){
-                creation(elem, fake?Math.trunc(path/2):path    , d1, x,y, red,g,b, rot, true, fake);//real
+                creation(elem, fake?Math.trunc(path/2):path-2  , d1, x,y, red,g,b, rot, true, fake);//real
                 creation(elem, fake?Math.trunc(path/2):fakepath, d2, x,y, red,g,b, rot, true, true);//fake
             }
             else{
-                creation(elem, fake?Math.trunc(path/2):path    , d1, x,y, red,g,b, rot, true, true);//real
-                creation(elem, fake?Math.trunc(path/2):fakepath, d2, x,y, red,g,b, rot, true, fake);//fake
+                creation(elem, fake?Math.trunc(path/2):fakepath, d2, x,y, red,g,b, rot, true, true);//fake
+                creation(elem, fake?Math.trunc(path/2):path-2  , d1, x,y, red,g,b, rot, true, fake);//real
             }
             
             return;
@@ -121,7 +121,7 @@ function creation(elem, path, dir, x, y, red,g,b, rot, pred, fake){
 function nextlevel(){
     start.innerHTML= "<div class='tile'></div><div class='logo'><div>Help Me</div></div>";
     path=14 + lev*3;
-    fakepath=6 + lev*2;
+    fakepath=6 + lev;
     time = 19+lev;
     level.innerHTML='Level '+lev;
     timediv.innerHTML=''+time.toFixed(1);
