@@ -205,4 +205,8 @@ if (isMobile) {
   },2000);
 }
 
+//preload
+new Image().src="files/skull.png";
+new Image().src="files/smile.png";
+
 
