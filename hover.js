@@ -1,3 +1,22 @@
+// polyfilling showmodal,close,open for dlgpop, dlgre, dlgover
+if(!dlgpop.showModal){
+    console.log('polyfilling Dialog');
+    let arr = [dlgpop, dlgre, dlgover];
+    for(let dlg of arr){
+        dlg.style.transform='scale(0)';
+        dlg.style.display='initial';
+        dlg.open=false;
+        dlg.close = ()=>{
+            dlg.open=false;
+            dlg.style.transform='scale(0)';
+        }
+        dlg.showModal = ()=>{
+            dlg.open=true;
+            dlg.style.transform='scale(1)';
+        }
+    }
+}
+
 const size=60;
 const s=new Set();
 

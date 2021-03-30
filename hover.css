@@ -65,6 +65,7 @@ input:hover{
 }
 #re:hover .alt>div{
     position: relative;
+    width:80px;
     width:fit-content;
     font-size: .8em;
     -webkit-text-stroke-width: thin;
@@ -177,6 +178,7 @@ dialog{
     background-color:skyblue;
 	text-align:center;
 	box-sizing:border-box;
+    width:initial;
 	width: fit-content;
     min-height: initial;
     padding: 16px;
@@ -184,10 +186,10 @@ dialog{
     border-radius: 20px;
     top: 120px;
     z-index: 2;
-    font-size: 2em;
+    font-size: min( 2em, 10vw);
 }
 dialog>div{
-    font-size: 2em;
+    font-size: min( 2em, 10vw);
 }
 dialog::backdrop {
     background: linear-gradient(0deg, #0f02, transparent);
